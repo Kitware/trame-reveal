@@ -2,6 +2,40 @@
 
 This is a Python package designed to help integrate trame applications into reveal.js slides.
 
+## Local set up
+
+If you pulled the repository manually, you must retrieve the necessary reveal.js files with the following commands:
+
+### Windows
+
+    $env:SRC_URL="https://unpkg.com/reveal.js@6.0.1/dist"
+    $env:DST_PATH="./src/trame_revealjs/serve"
+
+    curl.exe $env:SRC_URL/reveal.js -Lo $env:DST_PATH/revealjs/js/reveal.js
+    curl.exe $env:SRC_URL/plugin/notes.js -Lo $env:DST_PATH/revealjs/js/notes.js
+    curl.exe $env:SRC_URL/plugin/markdown.js -Lo $env:DST_PATH/revealjs/js/markdown.js
+    curl.exe $env:SRC_URL/plugin/highlight.js -Lo $env:DST_PATH/revealjs/js/highlight.js
+
+    curl.exe $env:SRC_URL/reset.css -Lo $env:DST_PATH/revealjs/css/reset.css
+    curl.exe $env:SRC_URL/reveal.css -Lo $env:DST_PATH/revealjs/css/reveal.css
+    curl.exe $env:SRC_URL/theme/black.css -Lo $env:DST_PATH/revealjs/css/black.css
+    curl.exe $env:SRC_URL/plugin/highlight/monokai.css -Lo $env:DST_PATH/revealjs/css/monokai.css
+
+### Unix
+
+    export SRC_URL=https://unpkg.com/reveal.js@6.0.1/dist
+    export DST_PATH=./src/trame_revealjs/serve
+
+    curl $SRC_URL/reveal.js -Lo $DST_PATH/revealjs/js/reveal.js
+    curl $SRC_URL/plugin/notes.js -Lo $DST_PATH/revealjs/js/notes.js
+    curl $SRC_URL/plugin/markdown.js -Lo $DST_PATH/revealjs/js/markdown.js
+    curl $SRC_URL/plugin/highlight.js -Lo $DST_PATH/revealjs/js/highlight.js
+
+    curl $SRC_URL/reset.css -Lo $DST_PATH/revealjs/css/reset.css
+    curl $SRC_URL/reveal.css -Lo $DST_PATH/revealjs/css/reveal.css
+    curl $SRC_URL/theme/black.css -Lo $DST_PATH/revealjs/css/black.css
+    curl $SRC_URL/plugin/highlight/monokai.css -Lo $DST_PATH/revealjs/css/monokai.css
+
 ## Guide
 
 To embed one or multiple trame applications into a reveal.js set of slides:

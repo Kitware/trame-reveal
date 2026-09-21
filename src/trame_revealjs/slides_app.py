@@ -25,21 +25,21 @@ class SlidesApp(TrameApp):
         self.port = port
         self.server.enable_module({
             "serve" : {
-                "sources": Path(__file__).with_name("js_sources"),
+                "serve": Path(__file__).with_name("serve"),
                 "$": Path(sys.argv[0]).resolve().parent.joinpath("www").resolve().as_posix(),
             },
             "scripts": [
-                "sources/TrameEmbeddedApp.js",
-                "https://unpkg.com/reveal.js@6.0.1/dist/reveal.js",
-                "https://unpkg.com/reveal.js@6.0.1/dist/plugin/notes.js",
-                "https://unpkg.com/reveal.js@6.0.1/dist/plugin/markdown.js",
-                "https://unpkg.com/reveal.js@6.0.1/dist/plugin/highlight.js",
+                "serve/TrameEmbeddedApp.js",
+                "serve/revealjs/js/reveal.js",
+                "serve/revealjs/js/notes.js",
+                "serve/revealjs/js/markdown.js",
+                "serve/revealjs/js/highlight.js",
             ],
             "styles": [
-                "https://unpkg.com/reveal.js@6.0.1/dist/reset.css",
-                "https://unpkg.com/reveal.js@6.0.1/dist/reveal.css",
-                "https://unpkg.com/reveal.js@6.0.1/dist/theme/black.css",
-                "https://unpkg.com/reveal.js@6.0.1/dist/plugin/highlight/monokai.css",
+                "serve/revealjs/css/reset.css",
+                "serve/revealjs/css/reveal.css",
+                "serve/revealjs/css/black.css",
+                "serve/revealjs/css/monokai.css",
             ],
         })
 

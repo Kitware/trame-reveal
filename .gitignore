@@ -1,2 +1,3 @@
 *.pyc
 .venv
+src/trame_revealjs/serve/revealjs
