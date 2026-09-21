@@ -1,0 +1,442 @@
+/*********************************************
+ * Base slide setup
+ *********************************************/
+.reveal {
+  background: #ffffff;
+  font-family: "Arial", "Helvetica", sans-serif;
+  color: #1a1a1a;
+}/*********************************************
+ * Base slide setup
+ *********************************************/
+.reveal {
+  background: #ffffff;
+  font-family: "Arial", "Helvetica", sans-serif;
+  color: #1a1a1a;
+}
+
+.reveal .slides section {
+  text-align: left;
+  padding: 60px 80px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.reveal .slides section {
+  background: transparent;
+}
+
+/*********************************************
+ * Top blue header band (angled like in image)
+ *********************************************/
+.reveal .slides section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 40px;
+  background: #0b5fa5; /* primary Google Slides-like blue */
+  clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%);
+  z-index: 0;
+}
+
+/*********************************************
+ * Bottom green accent bar (angled)
+ *********************************************/
+.reveal .slides section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 20px;
+  background: #43b02a; /* kitware-like green */
+  clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 0;
+}
+
+/*********************************************
+ * Text style
+ *********************************************/
+ .centered-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+ }
+
+.title {
+  font-size: 100px;
+  font-weight: 700;
+  color: #0b3a66;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+h1, h2, h3 {
+  text-transform: none !important;
+}
+
+.reveal h1 {
+  font-size: 60px;
+  font-weight: 700;
+  color: #0b3a66;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal h2 {
+  font-size: 40px;
+  font-weight: 500;
+  color: #0b5fa5;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal h3 {
+  font-size: 30px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal p {
+  font-size: 28px;
+  margin: 10px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal .subtext {
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal ul li {
+  font-size: 26px;
+  margin: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.reveal ul li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.reveal .slides section * {
+  position: relative;
+  z-index: 2;
+}
+
+/*********************************************
+ * Slide number (bottom-right like image)
+ *********************************************/
+.reveal .slide-number {
+  right: 20px;
+  bottom: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+/*********************************************
+ * Slide style
+ *********************************************/
+.reveal .slides {
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  inset: 0 !important;
+  position: absolute;
+}
+
+.reveal .slides section {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 60px 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.reveal .slides section .split {
+  display: flex;
+  gap: 20px;
+  height: 70%;
+}
+.reveal .slides section .split .left {
+  flex: 1;
+  height: 100%;
+}
+
+.reveal .slides section .split trame-embedded-app {
+  flex: 1;
+  height: 100%;
+}
+
+.reveal .slides section .split .panel {
+  flex: 1;
+  min-height: 0;        /* critical: allows flex child to shrink below content size */
+  overflow-y: auto;     /* panel is the ONE vertical scroll container */
+  overflow-x: auto;
+}
+
+.reveal .slides section .split .panel pre {
+  height: auto !important;
+  max-height: none !important;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  overflow: visible !important;  /* never scroll on pre itself */
+}
+
+.reveal .slides section .split .panel pre code {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  display: block;
+  white-space: pre;
+}
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.child {
+  text-align: center;
+}
+
+.reveal .slides section {
+  text-align: left;
+  padding: 60px 80px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.reveal .slides section {
+  background: transparent;
+}
+
+/*********************************************
+ * Top blue header band (angled like in image)
+ *********************************************/
+.reveal .slides section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 40px;
+  background: #0b5fa5; /* primary Google Slides-like blue */
+  clip-path: polygon(0 0, 100% 0, 97% 100%, 0 100%);
+  z-index: 0;
+}
+
+/*********************************************
+ * Bottom green accent bar (angled)
+ *********************************************/
+.reveal .slides section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 20px;
+  background: #43b02a; /* kitware-like green */
+  clip-path: polygon(5% 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 0;
+}
+
+/*********************************************
+ * Text style
+ *********************************************/
+ .centered-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+ }
+
+.title {
+  font-size: 60px;
+  font-weight: 700;
+  color: #0b3a66;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+h1, h2, h3 {
+  text-transform: none !important;
+}
+
+.reveal h1 {
+  font-size: 60px;
+  font-weight: 700;
+  color: #0b3a66;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal h2 {
+  font-size: 40px;
+  font-weight: 500;
+  color: #0b5fa5;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal h3 {
+  font-size: 30px;
+  font-weight: 400;
+  color: #000000;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal p {
+  font-size: 28px;
+  margin: 10px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal .subtext {
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.reveal ul li {
+  font-size: 26px;
+  margin: 8px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.reveal ul li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.reveal .slides section * {
+  position: relative;
+  z-index: 2;
+}
+
+/*********************************************
+ * Slide number (bottom-right like image)
+ *********************************************/
+.reveal .slide-number {
+  right: 20px;
+  bottom: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+/*********************************************
+ * Slide style
+ *********************************************/
+.reveal .slides {
+  width: 100% !important;
+  height: 100% !important;
+  transform: none !important;
+  inset: 0 !important;
+  position: absolute;
+}
+
+.reveal .slides section {
+  width: 100% !important;
+  height: 100% !important;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 60px 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.reveal .slides section .split {
+  display: flex;
+  gap: 20px;
+  height: 70%;
+}
+
+.reveal .slides section .split trame-embedded-app {
+  flex: 1;
+  height: 100%;
+}
+
+.reveal .slides section .split .panel {
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+}
+
+.reveal .slides section .split .panel pre {
+  height: 100%;
+  width:100%;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.child {
+  text-align: center;
+}
