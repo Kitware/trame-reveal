@@ -1,7 +1,7 @@
 from pathlib import Path
+
 from trame_revealjs import SlidesApp
 from trame_slicer.app.medical_viewer_app import MedicalViewerApp
-
 
 if __name__ == "__main__":
     app = SlidesApp(
@@ -13,6 +13,6 @@ if __name__ == "__main__":
             "app2": (MedicalViewerApp, []),
             "app3": (MedicalViewerApp, []),
             "app4": (MedicalViewerApp, []),
-        }
+        },
     )
     app.start()

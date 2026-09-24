@@ -1,0 +1,95 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+#
+# requires-python = ">=3.10"
+#
+# dependencies = [
+#   "trame>=3.13",
+#   "trame-vuetify",
+#   "trame-vtk",
+#   "trame-revealjs",
+#   "parsli",
+#   "vtk<9.7",
+# ]
+#
+# [[tool.uv.index]]
+# url = "https://wheels.vtk.org"
+#
+# ///
+
+import asyncio
+from pathlib import Path
+
+from trame.app import TrameApp
+from trame.ui.vuetify3 import SinglePageLayout
+from trame.widgets import vuetify3 as v3, vtk as vtkw
+
+from trame.tools.reveal import SlideViewer
+
+from parsli.viewer.core import Viewer
+
+class Cone(TrameApp):
+    def __init__(self, server_or_name=None):
+        super().__init__(server_or_name)
+        with SinglePageLayout(self.server) as self.ui:
+            self.ui.title.set_text("Trame demo")
+            with self.ui.toolbar as toolbar:
+                toolbar.density = "compact"
+                v3.VSpacer()
+                v3.VSlider(
+                    v_model=("resolution", 6),
+                    min=3,
+                    max=60,
+                    step=1,
+                    hide_details=True,
+                    style="max-width: 300px;",
+                )
+                v3.VBtn(icon="mdi-lock-reset", click="resolution=6")
+                v3.VBtn(icon="mdi-crop-free", click=self.ctrl.view_reset_camera)
+
+            with self.ui.content:
+                with v3.VContainer(fluid=True, classes="pa-0 fill-height"):
+                    with vtkw.VtkView() as view:
+                        self.ctrl.view_reset_camera = view.reset_camera
+                        with vtkw.VtkGeometryRepresentation():
+                            vtkw.VtkAlgorithm(
+                                vtk_class="vtkConeSource",
+                                state=("{ resolution }",),
+                            )
+
+def init_small(app):
+    app.server.state.resolution = 3
+
+async def init_large(app):
+    while True:
+        with app.server.state as s:
+            s.resolution += 1
+        await asyncio.sleep(0.1)
+        if app.server.state.resolution > 60:
+            app.server.state.resolution = 3
+
+def main():
+    app = SlideViewer(
+        content=Path(__file__).with_name("slides.html"),
+        theme="white",
+        style="$/style.css",
+    )
+    app.register_app(
+        name="parsli",
+        app=Viewer,
+    )
+    app.register_app(
+        name="small-cone",
+        app=Cone,
+        initialize=init_small,
+
+    )
+    app.register_app(
+        name="large-cone",
+        app=Cone,
+        initialize=init_large,
+    )
+    app.server.start()
+
+if __name__ == "__main__":
+    main()
