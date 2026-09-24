@@ -1,5 +1,5 @@
 [project]
-name = "trame-revealjs"
+name = "trame-reveal"
 version = "0.0.1"
 description = "Reveal.js widget and helper application"
 authors = [
@@ -48,13 +48,13 @@ build-backend = "hatchling.build"
 [tool.hatch.build]
 include = [
   "/src/**/*.py",
-  "/src/trame_revealjs/**/*.js",
-  "/src/trame_revealjs/**/*.css",
+  "/src/trame_reveal/**/*.js",
+  "/src/trame_reveal/**/*.css",
 ]
 
 [tool.hatch.build.targets.wheel]
 packages = [
-    "src/trame_revealjs",
+    "src/trame_reveal",
     "src/trame",
 ]
 
@@ -104,7 +104,7 @@ version_toml = [
     "pyproject.toml:project.version",
 ]
 version_variables = [
-    "src/trame_revealjs/__init__.py:__version__",
+    "src/trame_reveal/__init__.py:__version__",
 ]
 
 build_command = """
