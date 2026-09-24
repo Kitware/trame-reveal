@@ -1,7 +1,7 @@
-trame-revealjs
+trame-reveal
 ----------------------------------------
 
-Reveal.js widget and helper application"
+Reveal.js widget and helper application
 
 License
 ----------------------------------------
@@ -15,13 +15,7 @@ Install the application/library
 
 .. code-block:: console
 
-    pip install trame-revealjs
-
-Run the application
-
-.. code-block:: console
-
-    trame-revealjs
+    pip install trame-reveal
 
 Development setup
 ----------------------------------------
@@ -64,6 +58,7 @@ For running tests and checks, you can run ``nox``.
     # tests
     nox -s tests
 
+
 Guide
 ----------------------------------------
 
@@ -74,7 +69,7 @@ To embed one or multiple trame applications into a reveal.js set of slides:
 
 .. code-block:: console
 
-    <trame-embedded-app app-id="app1"></trame-embedded-app>
+    <reveal-trame-app name="app1"></reveal-trame-app>
 
     `app-1` is an ID for your trame application. If you create another `<trame-embedded-app>` with the same ID, it will use the same application
 
