@@ -1,8 +1,7 @@
 from pathlib import Path
-from trame_revealjs import SlidesApp
 
 from app import Cone
-
+from trame_revealjs import SlidesApp
 
 if __name__ == "__main__":
     app = SlidesApp(
@@ -10,6 +9,6 @@ if __name__ == "__main__":
         server=None,
         trame_apps={
             "app1": (Cone, [12]),
-        }
+        },
     )
     app.start()

@@ -195,7 +195,7 @@ h3 {
   height: 100%;
 }
 
-.reveal .slides section .split trame-embedded-app {
+.reveal .slides section .split iframe {
   flex: 1;
   height: 100%;
 }
@@ -414,7 +414,7 @@ h3 {
   height: 70%;
 }
 
-.reveal .slides section .split trame-embedded-app {
+.reveal .slides section .split iframe {
   flex: 1;
   height: 100%;
 }
