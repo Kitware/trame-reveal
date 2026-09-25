@@ -72,7 +72,6 @@ def main():
     app = SlideViewer(
         content=Path(__file__).with_name("slides.html"),
         theme="white",
-        style="$/style.css",
     )
     app.register_app(
         name="parsli",

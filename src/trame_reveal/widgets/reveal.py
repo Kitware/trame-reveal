@@ -16,14 +16,20 @@ __all__ = [
 
 
 class Slides(HtmlElement):
+    ID = 0
+
     def __init__(self, content=None, **kwargs):
+        Slides.ID += 1
+        tpl_name = f"rslides_{Slides.ID}"
+
         super().__init__(
             "reveal-slides",
+            tplName=tpl_name,
             **kwargs,
         )
         self._attr_names += [
-            "theme",
+            "tplName",
             "config",
         ]
 
-        self.state.trame__template_slides = content
+        self.state[f"trame__template_{tpl_name}"] = content

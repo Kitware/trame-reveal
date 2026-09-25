@@ -1,0 +1,4 @@
+.reveal .slides section:has(.trame-app) {
+  height: 100%;
+  padding: 0;
+}

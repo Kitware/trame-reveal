@@ -8,6 +8,7 @@ from trame.app import TrameApp, asynchronous, get_server
 from trame.decorators import life_cycle
 from trame.ui.html import DivLayout
 from trame.widgets import client, reveal
+from trame_reveal import module
 
 
 @dataclass
@@ -20,10 +21,15 @@ class Entry:
 
 
 class SlideViewer(TrameApp):
-    def __init__(self, server=None, content=None, theme="white", style=None):
+    def __init__(self, server=None, content=None, theme="white", styles=None):
         super().__init__(server)
 
         reveal.initialize(self.server)
+        if styles is None:
+            styles = []
+
+        if theme:
+            styles.append(f"{module.serve_directory}/theme/{theme}.css")
 
         self._slide_file = Path(content)
         www = self._slide_file.with_name("$")
@@ -33,10 +39,13 @@ class SlideViewer(TrameApp):
                     "serve": {"$": str(www.resolve())},
                 }
             )
-        if style:
+            for css in www.glob("*.css"):
+                styles.append(f"$/{css.name}")
+
+        if styles:
             self.server.enable_module(
                 {
-                    "styles": [style],
+                    "styles": styles,
                 }
             )
         self._apps = {}

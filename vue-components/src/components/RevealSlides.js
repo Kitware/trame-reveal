@@ -17,10 +17,6 @@ export default {
       type: String,
       default: "slides",
     },
-    theme: {
-      type: String,
-      default: "white",
-    },
     config: {
       type: Object,
       default: null,
@@ -31,7 +27,6 @@ export default {
 
     onMounted(async () => {
       await nextTick();
-      // await import(`reveal.js/dist/${props.theme}.css`);
       const deck = new Reveal({
         hash: true,
         plugins: [markdown, highlight, math, notes, search, zoom],
