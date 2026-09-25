@@ -11,7 +11,7 @@ export default {
     const url = computed(() => trame.state.state.app_urls[props.name]);
 
     if (!url.value) {
-      throw new Error(`Unknown trame application: ${props.appId}`);
+      throw new Error(`Unknown trame application: ${props.name}`);
     }
 
     return {
