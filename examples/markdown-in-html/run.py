@@ -7,7 +7,7 @@
 #   "trame>=3.13",
 #   "trame-vuetify",
 #   "trame-vtk",
-#   "trame-revealjs",
+#   "trame-reveal",
 # ]
 #
 # ///
