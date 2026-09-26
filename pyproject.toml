@@ -1,6 +1,6 @@
 [project]
 name = "trame-reveal"
-version = "1.0.0"
+version = "1.0.1"
 description = "Reveal.js widget and helper application"
 authors = [
     { name = "Kitware Inc."},
