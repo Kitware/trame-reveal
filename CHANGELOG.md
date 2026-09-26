@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v1.0.2 (2026-09-26)
+
+### Bug Fixes
+
+- Release on pypi
+  ([`11b2af2`](https://github.com/Kitware/trame-reveal/commit/11b2af2c9353e541116b9c0cf5a378ccdbb2e88f))
+
+
 ## v1.0.1 (2026-09-26)
 
 ### Bug Fixes
