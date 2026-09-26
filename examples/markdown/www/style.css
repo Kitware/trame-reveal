@@ -1,9 +1,0 @@
-.reveal .slides section:has(trame-embedded-app) {
-  padding: 0 !important;
-  top: 0 !important;
-  height: 100%;
-}
-
-.reveal .slides section:has(trame-embedded-app) p {
-  height: 100%;
-}

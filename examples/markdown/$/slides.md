@@ -16,4 +16,4 @@ Some **bold** text.
 
 <!-- .full-slide -->
 
-<trame-embedded-app app-id="app1"></trame-embedded-app>
+<reveal-trame-app name="cone" class="trame-app"></reveal-trame-app>

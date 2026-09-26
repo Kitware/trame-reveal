@@ -21,12 +21,20 @@ class Entry:
 
 
 class SlideViewer(TrameApp):
-    def __init__(self, server=None, content=None, theme="white", styles=None):
+    """
+    content:
+        Path to slides.html file.
+
+    theme:
+        black, blood, black-contrast, beige, serif, dracula, night,
+        white, solarized, moon, white-contrast, simple, league, sky
+    """
+
+    def __init__(self, server=None, content=None, theme="white"):
         super().__init__(server)
 
         reveal.initialize(self.server)
-        if styles is None:
-            styles = []
+        styles = []
 
         if theme:
             styles.append(f"{module.serve_directory}/theme/{theme}.css")

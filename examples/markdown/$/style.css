@@ -1,0 +1,8 @@
+p:has(.trame-app) {
+  height: 100%;
+}
+
+.reveal .slides section:has(.trame-app) {
+  height: 100%;
+  padding: 0;
+}
