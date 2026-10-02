@@ -60,7 +60,7 @@ def download(url: str, target_path: str) -> bool:
 def main():
     app = SlideViewer(
         content=Path(__file__).with_name("slides.html"),
-        theme="white",
+        theme="kitware",
     )
     app.register_app(
         name="app1",
