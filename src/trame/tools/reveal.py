@@ -26,8 +26,8 @@ class SlideViewer(TrameApp):
         Path to slides.html file.
 
     theme:
-        black, blood, black-contrast, beige, serif, dracula, night,
-        white, solarized, moon, white-contrast, simple, league, sky
+        kitware, black, blood, black-contrast, beige, serif, dracula,
+        night, white, solarized, moon, white-contrast, simple, league, sky
     """
 
     def __init__(self, server=None, content=None, theme="white"):
@@ -35,9 +35,23 @@ class SlideViewer(TrameApp):
 
         reveal.initialize(self.server)
         styles = []
+        other = {}
 
         if theme:
-            styles.append(f"{module.serve_directory}/theme/{theme}.css")
+            theme_dir = Path(f"{module.serve_path}/theme")
+            theme_file_path = theme_dir.joinpath(f"{theme}.css")
+            if theme_file_path.exists():
+                styles.append(f"{module.serve_directory}/theme/{theme}.css")
+            else:
+                custom_theme_dir = theme_dir.joinpath(theme)
+                if custom_theme_dir.exists():
+                    other[theme] = f"{module.serve_path}/theme/{theme}"
+                    for file in custom_theme_dir.iterdir():
+                        if file.suffix == ".css":
+                            styles.append(f"{module.serve_directory}/theme/{theme}/{file.name}")
+                else:
+                    error = f"No theme has the name {theme}"
+                    raise FileNotFoundError(error)
 
         self._slide_file = Path(content)
         www = self._slide_file.with_name("$")
@@ -53,9 +67,13 @@ class SlideViewer(TrameApp):
         if styles:
             self.server.enable_module(
                 {
-                    "styles": styles,
+                    "styles": styles
                 }
             )
+        if other:
+            self.server.enable_module({
+                "serve": other
+            })
         self._apps = {}
         with DivLayout(self.server) as self.ui:
             self.ui.root.style = "height:100vh;"
