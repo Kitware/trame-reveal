@@ -7,6 +7,9 @@ const outDir = fileURLToPath(
 const themeSrcDir = fileURLToPath(
   new URL("./node_modules/reveal.js/dist/theme", import.meta.url),
 );
+const customThemeSrcDir = fileURLToPath(
+  new URL("./src/themes", import.meta.url),
+);
 
 export default {
   base: "./",
@@ -33,6 +36,7 @@ export default {
       name: "copy-reveal-theme",
       closeBundle() {
         cpSync(themeSrcDir, `${outDir}/theme`, { recursive: true });
+        cpSync(customThemeSrcDir, `${outDir}/theme`, { recursive: true });
       },
     },
   ],

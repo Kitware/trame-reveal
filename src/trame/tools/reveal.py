@@ -26,8 +26,8 @@ class SlideViewer(TrameApp):
         Path to slides.html file.
 
     theme:
-        black, blood, black-contrast, beige, serif, dracula, night,
-        white, solarized, moon, white-contrast, simple, league, sky
+        kitware, black, blood, black-contrast, beige, serif, dracula,
+        night, white, solarized, moon, white-contrast, simple, league, sky
     """
 
     def __init__(self, server=None, content=None, theme="white"):
@@ -51,11 +51,8 @@ class SlideViewer(TrameApp):
                 styles.append(f"$/{css.name}")
 
         if styles:
-            self.server.enable_module(
-                {
-                    "styles": styles,
-                }
-            )
+            self.server.enable_module({"styles": styles})
+
         self._apps = {}
         with DivLayout(self.server) as self.ui:
             self.ui.root.style = "height:100vh;"
