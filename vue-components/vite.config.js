@@ -8,7 +8,7 @@ const themeSrcDir = fileURLToPath(
   new URL("./node_modules/reveal.js/dist/theme", import.meta.url),
 );
 const customThemeSrcDir = fileURLToPath(
-  new URL("../src/trame_reveal/module/custom_themes", import.meta.url)
+  new URL("./src/themes", import.meta.url),
 );
 
 export default {

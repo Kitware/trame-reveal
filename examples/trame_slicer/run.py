@@ -16,14 +16,14 @@
 #
 # ///
 
-import os
 import json
-import requests
+import os
 from pathlib import Path
 
-from trame.tools.reveal import SlideViewer
-
+import requests
 from trame_slicer.app.medical_viewer_app import MedicalViewerApp
+
+from trame.tools.reveal import SlideViewer
 
 
 def load_scene(application: MedicalViewerApp, file_path: str) -> None:
@@ -31,7 +31,7 @@ def load_scene(application: MedicalViewerApp, file_path: str) -> None:
 
 
 def load_state(application: MedicalViewerApp, state_path: str) -> None:
-    with open(state_path, "r") as f:
+    with Path(state_path).open() as f:
         state = json.load(f)
 
     for k, v in state.items():
@@ -41,20 +41,18 @@ def load_state(application: MedicalViewerApp, state_path: str) -> None:
         application.state.flush()
 
 
-
 def download(url: str, target_path: str) -> bool:
     r = requests.get(url, stream=True)
     if r.ok:
-        with open(target_path, 'wb') as f:
+        with Path(target_path).open(mode="wb") as f:
             for chunk in r.iter_content(chunk_size=1024 * 8):
                 if chunk:
                     f.write(chunk)
                     f.flush()
                     os.fsync(f.fileno())
         return True
-    else:
-        print("Download failed: status code {}\n{}".format(r.status_code, r.text))
-        return False
+    print(f"Download failed: status code {r.status_code}\n{r.text}")
+    return False
 
 
 def main():
@@ -100,7 +98,10 @@ def main():
 
     def load_states():
         for app_name, entry in app._apps.items():
-            load_state(entry.app, Path(__file__).parent.joinpath("data_files", f"{app_name}_state.json"))
+            load_state(
+                entry.app,
+                Path(__file__).parent.joinpath("data_files", f"{app_name}_state.json"),
+            )
 
     app.ctrl.on_client_connected.add(load_states)
     app.server.start()

@@ -68,14 +68,53 @@ async def init_large(app):
         if app.server.state.resolution > 60:
             app.server.state.resolution = 3
 
+def init_parsli(app):
+    with app.state as state:
+        state.update({
+        "coast_active_regions": ['asia' ],
+        "color_by": "strike_slip",
+        "color_max": 8.157,
+        "color_min": -8.157,
+        "color_preset": "Fast",
+        "formula": "sign(strike_slip) * abs(strike_slip)^.5",
+        "latitude_bnds": [30.386, 43.674],
+        "light_rivers": False,
+        "light_segment": False,
+        "light_surface": False,
+        "light_terrain": False,
+        "longitude_bnds":[130.823, 146.75],
+        "nb_contours": 16,
+        "nb_grid_line_per_degree": -3,
+        "rivers_opacity": 100,
+        "segment_opacity": 1,
+        "show_earth_core": False,
+        "show_grid": True,
+        "show_rivers": True,
+        "show_segment": True,
+        "show_surface": True,
+        "show_terrain": True,
+        "spherical": True,
+        "subdivide": False,
+        "surface_opacity": 100,
+        "terrain_opacity": 100,
+        "topo_ui": False,
+        "use_formula": True,
+        "vertical_scaling": 1,
+        "vertical_scaling_topo": 1,
+        "show_panel": False,
+        })
+
+
+
 def main():
     app = SlideViewer(
         content=Path(__file__).with_name("slides.html"),
-        theme="white",
+        theme="kitware",
     )
     app.register_app(
         name="parsli",
         app=Viewer,
+        initialize=init_parsli,
     )
     app.register_app(
         name="small-cone",

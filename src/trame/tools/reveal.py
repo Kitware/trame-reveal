@@ -35,23 +35,9 @@ class SlideViewer(TrameApp):
 
         reveal.initialize(self.server)
         styles = []
-        other = {}
 
         if theme:
-            theme_dir = Path(f"{module.serve_path}/theme")
-            theme_file_path = theme_dir.joinpath(f"{theme}.css")
-            if theme_file_path.exists():
-                styles.append(f"{module.serve_directory}/theme/{theme}.css")
-            else:
-                custom_theme_dir = theme_dir.joinpath(theme)
-                if custom_theme_dir.exists():
-                    other[theme] = f"{module.serve_path}/theme/{theme}"
-                    for file in custom_theme_dir.iterdir():
-                        if file.suffix == ".css":
-                            styles.append(f"{module.serve_directory}/theme/{theme}/{file.name}")
-                else:
-                    error = f"No theme has the name {theme}"
-                    raise FileNotFoundError(error)
+            styles.append(f"{module.serve_directory}/theme/{theme}.css")
 
         self._slide_file = Path(content)
         www = self._slide_file.with_name("$")
@@ -65,15 +51,8 @@ class SlideViewer(TrameApp):
                 styles.append(f"$/{css.name}")
 
         if styles:
-            self.server.enable_module(
-                {
-                    "styles": styles
-                }
-            )
-        if other:
-            self.server.enable_module({
-                "serve": other
-            })
+            self.server.enable_module({"styles": styles})
+
         self._apps = {}
         with DivLayout(self.server) as self.ui:
             self.ui.root.style = "height:100vh;"

@@ -1,59 +1,29 @@
 <div class="slides">
-  <section>
-    <img
-      style="position: fixed; bottom: 2%; left: 1%; height: 10%; margin: 0"
-      src="$/kitware.svg"
-      alt="Kitware"
-    />
+  <section class="title-slide">
     <div class="centered-container">
-      <div class="title">trame-revealjs</div>
-      <div>Embed your trame applications in slides</div>
+      <h1>trame-revealjs</h1>
+      <h2>Embed your trame applications in slides</h2>
     </div>
   </section>
   <section data-auto-animate data-auto-animate-id="small">
-    <img
-      style="position: fixed; top: 2%; right: 1%; height: 4%; margin: 0"
-      src="$/kitware.svg"
-      alt="Kitware"
-    />
-    <h1>Easily integrate your trame applications in interactive slides</h1>
-    <div style="width: 100%; height: 80%">
+    <h2>Easily integrate your trame applications in interactive slides</h2>
+    <div class="content border-blue">
       <reveal-trame-app name="small-cone" />
     </div>
   </section>
   <section data-auto-animate data-auto-animate-id="large">
-    <img
-      style="position: fixed; top: 2%; right: 1%; height: 4%; margin: 0"
-      src="$/kitware.svg"
-      alt="My image"
-    />
-    <h1>With text</h1>
-    <div style="display: flex; gap: 20px; height: 70%;"> 
-      <div style="flex: 2">
-        <h2>Here comes</h2>
-        <ul>
-          <li
-            data-id="views-3d"
-            style="background-color: white !important; z-index: 50"
-          >
-            some
-          </li>
-          <li data-id="views-2d">text</li>
-        </ul>
-      </div>
-      <div style="flex: 3; width: 100%; height: 80%">
-        <reveal-trame-app name="large-cone" />
-      </div>
+    <h2>A full application on the right</h2>
+    <div class="content">
+      <ul class="left-col">
+        <li>A bullet point</li>
+        <li>Another bullet point</li>
+        <li>And the final one</li>
+      </ul>
     </div>
-  </section>
-  <section data-auto-animate data-auto-animate-id="parsli">
-    <img
-      style="position: fixed; top: 2%; right: 1%; height: 4%; margin: 0"
-      src="$/kitware.svg"
-      alt="My image"
-    />
-    <h1>Live demo</h1>
-    <div style="width: 100%; height: 80%">
+    <div
+      class="right-col border-green w-60 h-full z-top"
+      style="margin-right: 5vh"
+    >
       <reveal-trame-app name="parsli" />
     </div>
   </section>
