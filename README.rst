@@ -105,16 +105,22 @@ To easily integrate Trame applications in slides generated on slides.com:
          :width: 30em
 
    2. Copy the CSS content from step 2 into a blank file (skip step 1). You can optionally use the style.css file under examples/slides_com/$
-   3. Remove the <style> and </style> lines at the top and bottom of the file
-   4. Copy the HTML content from step 3 into a blank file. You can optionally use the index.html file under examples/slides_com
-   5. Replace all <iframe></iframe> occurrences by <reveal-trame-app name="..." /> with the name you want to associate with the application.
+   3. Copy the HTML content from step 3 into a blank file. You can optionally use the index.html file under examples/slides_com
+   4. Either run :code:`python ./src/trame/tools/fetch.py [path_to_copied_html] [path_to_copied_css] [output_html_path] [output_css_path]`* or manually:
+
+      1. Remove the <style> and </style> lines at the top and bottom of the file
+      2. Replace all <iframe></iframe> occurrences by <reveal-trame-app name="..." /> with the name you want to associate with the application.
+
+   You can add :code:`--static` to the python call to resolve all CSS imports locally
 
 3. Create a Python file referencing the HTML file SlideViewer. You can optionally use the run file under examples/slides_com
 
-   1. Pass the **initialize** parameters from step 4 into SlideViewer's *config* parameter.
+   1. Pass the **initialize** parameters from step 4 into SlideViewer's *config* parameter as a Python dictionary.
    2. Register the applications with the names used in 2.4 with *register_app*
 
 4. Run the application from its directory with: uv run
+
+* IMPORTANT: fetch.py recognizes iframe that need to be replaced by reveal-trame-app with the url pattern "http://trame:app-name" (which will produce reveal-trame-app name="app-name")
 
 Professional Support
 ----------------------------------------
