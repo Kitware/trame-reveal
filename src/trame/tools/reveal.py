@@ -3,6 +3,7 @@ from asyncio.tasks import Task
 from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 
 from trame.app import TrameApp, asynchronous, get_server
 from trame.decorators import life_cycle
@@ -30,7 +31,13 @@ class SlideViewer(TrameApp):
         night, white, solarized, moon, white-contrast, simple, league, sky
     """
 
-    def __init__(self, server=None, content=None, theme="white"):
+    def __init__(
+        self,
+        server=None,
+        content=None,
+        theme="white",
+        config: dict[str, Any] | None = None,
+    ):
         super().__init__(server)
 
         reveal.initialize(self.server)
@@ -60,6 +67,7 @@ class SlideViewer(TrameApp):
             reveal.Slides(
                 content=self._slide_file.read_text(),
                 theme=theme,
+                config=("config", config),
             )
 
     @life_cycle.server_ready_task
